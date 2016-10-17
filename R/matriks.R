@@ -115,6 +115,5 @@ matriksData<-function(ticker, dataType, startDate, endDate=NULL, period=NULL) {
 
   }
   tmp
-
 }
 

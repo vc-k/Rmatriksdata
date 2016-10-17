@@ -8,7 +8,6 @@
 #' @param period A character value is used with bar datatype to analyze data in different time segments.One of "\code{1min}","\code{5min}","\code{1hour}" and "\code{1day}".
 #' @return A data frame object is returned in "\code{trade}","\code{bestbidoffer}","\code{depth}","\code{openinterest}" and "\code{bar}" dataTypes.
 #' @seealso \code{\link{trade}}, \code{\link{bestbidoffer}}, \code{\link{depth}}, \code{\link{openinterest}}, \code{\link{bar}}
-
 getData<-function(dateRange,symbol,type,period=NULL,...){
   auth<-suppressWarnings(tryCatch(strsplit(readBin("~/matriks/.tkn","character"),",")[[1]][2],
                                   error=function(e) {auth<-getToken()}))
@@ -71,7 +70,6 @@ getData<-function(dateRange,symbol,type,period=NULL,...){
   }
 }
 
-
 #' Fetch Trade Data
 #'
 #' Fetches trade data from historical data service.
@@ -80,7 +78,6 @@ getData<-function(dateRange,symbol,type,period=NULL,...){
 #' @param dateRange A character vector of length two  \code{c("YYYY-MM-DD","YYYY-MM-DD")}.
 #' @return A data frame object is returned that contains bid or ask,trade id, price quantity and signal time columns.
 #' @seealso \code{\link{bestbidoffer}}, \code{\link{depth}}, \code{\link{openinterest}}, \code{\link{bar}}.
-
 trade <- function (dateRange,symbol){
   meta<-getData(dateRange,symbol,"trade")
   meta[,5]<-as.numeric(meta[,5])
@@ -156,7 +153,6 @@ depth <- function (dateRange,symbol){
   return(meta[,-2])
 }
 
-
 #' Fetch Openinterest Data
 #'
 #' Fetches openinterest data from historical data service
@@ -223,7 +219,6 @@ openinterest <- function (dateRange,symbol){
 #' @param period A character value is used with bar datatype to analyze data in different time segments.One of "\code{1min}","\code{5min}","\code{1hour}" and "\code{1day}".
 #' @return A data frame object is returned that contains open,high,low,close,quantity and weighted average price columns.
 #' @seealso \code{\link{trade}}, \code{\link{bestbidoffer}}, \code{\link{depth}}, \code{\link{openinterest}}.
-
 bar <- function (dateRange,symbol,period){
   meta<-getData(dateRange,symbol,"bar",period)
   date <- as.POSIXlt(meta$time/1000,tz = "GMT",origin = "1970-01-01")
