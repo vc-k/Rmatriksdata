@@ -20,7 +20,7 @@ getToken<-function(){
     reqH <- add_headers(Authorize = paste("Basic",up), dummy = "D")
     names(reqH$headers)[2] <- "X-Client-Type"
     req <- GET("http://web1.matriksdata.com/v1/login", reqH)
-    if(req$status_code==401){
+    if(req$status_code == 401){
       stop("Matriks login service status: 401")
     }
     response <- content(req,encoding = "UTF-8")
@@ -115,6 +115,5 @@ matriksData<-function(ticker, dataType, startDate, endDate=NULL, period=NULL) {
 
   }
   tmp
-
 }
 
