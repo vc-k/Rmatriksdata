@@ -226,13 +226,9 @@ openinterest <- function (dateRange,symbol){
 
 bar <- function (dateRange,symbol,period){
   meta<-getData(dateRange,symbol,"bar",period)
-  #meta$date <- NULL
   date <- as.POSIXlt(meta$time/1000,tz = "GMT",origin = "1970-01-01")
   meta <- meta[-c(1:2)]
-  # meta[,1] <- as.POSIXct(strftime(sub("T"," ",strtrim(meta[,1],width = 19)),"%Y-%m-%d %H:%M:%S",tz = "GMT"),tz = "GMT")
   meta <- cbind(date,meta)
-  # meta[,8] <- as.numeric(meta[,8])
-  #colnames(meta) <- c("date","symbol","close","high","low","open","volume","weighted_avg")
   closeAllConnections()
   return(meta)
 }

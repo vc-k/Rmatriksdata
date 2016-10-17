@@ -7,10 +7,12 @@ Author: veli c. kupeli <velican.kupeli@matriksdata.com>
 Maintainer: veli c. kupeli <velican.kupeli@matriksdata.com>
 Description: Fetch data from Matriks
 Depends:
-    httr (>= 1.2.1),
-    base64enc (>= 0.1-3),
-    xts (>= 0.9-7),
-    jsonlite (>= 1.1)
+    R (>= 3.2.4)
+Imports:
+    httr,
+    base64enc,
+    xts,
+    jsonlite
 License: MIT
 LazyData: TRUE
 RoxygenNote: 5.0.1
